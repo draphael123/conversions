@@ -1,0 +1,26 @@
+# Ignore zip files
+*.zip
+
+# Ignore markdown files (source files)
+*.md
+!README.md
+
+# Ignore CSV files
+*.csv
+
+# Ignore Python script (optional - you may want to include it)
+convert_md_to_csv.py
+
+# Ignore CSV files folder
+CSV files/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Editor files
+.vscode/
+.idea/
+*.swp
+*.swo
+

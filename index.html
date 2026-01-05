@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Markdown to CSV Converter</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>📄 Markdown to CSV Converter</h1>
+            <p>Upload markdown files with tables and convert them to CSV format</p>
+        </header>
+
+        <main>
+            <div class="upload-section">
+                <div class="upload-area" id="uploadArea">
+                    <svg class="upload-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                        <polyline points="17 8 12 3 7 8"></polyline>
+                        <line x1="12" y1="3" x2="12" y2="15"></line>
+                    </svg>
+                    <p class="upload-text">Drag and drop markdown files here</p>
+                    <p class="upload-subtext">or click to browse</p>
+                    <input type="file" id="fileInput" multiple accept=".md,.markdown" hidden>
+                </div>
+
+                <div class="file-list" id="fileList"></div>
+
+                <div class="actions">
+                    <button id="convertBtn" class="btn btn-primary" disabled>Convert All to CSV</button>
+                    <button id="clearBtn" class="btn btn-secondary" disabled>Clear Files</button>
+                </div>
+
+                <div class="results" id="results"></div>
+            </div>
+        </main>
+
+        <footer>
+            <p>Convert markdown tables to CSV format instantly in your browser</p>
+        </footer>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
+
