@@ -1,3 +1,9 @@
+// Wait for DOM to be fully loaded
+document.addEventListener('DOMContentLoaded', function() {
+    initializeApp();
+});
+
+function initializeApp() {
 // File handling
 const fileInput = document.getElementById('fileInput');
 const uploadArea = document.getElementById('uploadArea');
@@ -47,18 +53,23 @@ const conversionConfig = {
 
 // Conversion type selector
 conversionOptions.forEach(option => {
-    option.addEventListener('click', () => {
+    option.addEventListener('click', (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        console.log('Conversion type clicked:', option.dataset.type);
         conversionOptions.forEach(opt => opt.classList.remove('active'));
         option.classList.add('active');
         currentConversionType = option.dataset.type;
         const config = conversionConfig[currentConversionType];
-        fileInput.accept = config.accept;
-        uploadHint.textContent = config.hint;
+        if (config && fileInput && uploadHint) {
+            fileInput.accept = config.accept;
+            uploadHint.textContent = config.hint;
+        }
         files = [];
-        fileInput.value = '';
+        if (fileInput) fileInput.value = '';
         updateFileList();
         updateButtons();
-        results.innerHTML = '';
+        if (results) results.innerHTML = '';
     });
 });
 
@@ -565,7 +576,10 @@ clearBtn.addEventListener('click', () => {
 
 // Initialize
 const initialConfig = conversionConfig[currentConversionType];
-fileInput.accept = initialConfig.accept;
-uploadHint.textContent = initialConfig.hint;
+if (fileInput && uploadHint && initialConfig) {
+    fileInput.accept = initialConfig.accept;
+    uploadHint.textContent = initialConfig.hint;
+}
 updateFileList();
 updateButtons();
+} // End of initializeApp function
